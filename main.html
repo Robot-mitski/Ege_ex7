@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Разбор задания ЕГЭ по информатике</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(90deg, #1a2980 0%, #26d0ce 100%);
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            color: #1a2980;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #26d0ce;
+        }
+        
+        .problem-text {
+            background-color: #f8f9fa;
+            border-left: 5px solid #26d0ce;
+            padding: 25px;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .solution {
+            background-color: #e8f4f8;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+            display: none;
+        }
+        
+        .solution.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .formula {
+            font-family: 'Courier New', monospace;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        
+        .answer-section {
+            background-color: #f0f7ff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        input[type="number"] {
+            padding: 15px;
+            width: 200px;
+            font-size: 1.2rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin: 20px 10px;
+            text-align: center;
+        }
+        
+        button {
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            background: linear-gradient(90deg, #1a2980 0%, #26d0ce 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .result {
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            display: none;
+        }
+        
+        .result.correct {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        
+        .result.incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        
+        .show-solution-btn {
+            background: linear-gradient(90deg, #8e2de2 0%, #4a00e0 100%);
+            margin-top: 15px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #666;
+            border-top: 1px solid #eee;
+            font-size: 0.9rem;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+            
+            header {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            input[type="number"] {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Разбор задания ЕГЭ по информатике</h1>
+            <div class="subtitle">Задание №1: Кодирование звуковой информации</div>
+        </header>
+        
+        <div class="content">
+            <div class="section">
+                <h2>Условие задачи</h2>
+                <div class="problem-text">
+                    <p>Музыкальный фрагмент был оцифрован и записан в виде файла без использования сжатия данных. Получившийся файл был передан в город А по каналу связи за 30 секунд.</p>
+                    <p>Затем тот же музыкальный фрагмент был оцифрован повторно с разрешением в 2 раза выше и частотой дискретизации в 1,5 раза меньше, чем в первый раз. Сжатие данных не производилось.</p>
+                    <p>Полученный файл был передан в город Б; пропускная способность канала связи с городом Б в 4 раза выше, чем канала связи с городом А.</p>
+                    <p><strong>Сколько секунд длилась передача файла в город Б?</strong></p>
+                    <p><em>В ответе запишите только целое число, единицу измерения писать не нужно.</em></p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Решение</h2>
+                <p>Нажмите кнопку, чтобы посмотреть решение задачи:</p>
+                <button class="show-solution-btn" id="showSolutionBtn">Показать решение</button>
+                
+                <div class="solution" id="solution">
+                    <p>Объем аудиофайла определяется формулой:</p>
+                    <div class="formula">V = I × f × t × k</div>
+                    <p>где:<br>
+                    I - разрешение (глубина звука)<br>
+                    f - частота дискретизации<br>
+                    t - время звучания<br>
+                    k - количество каналов (для простоты считаем неизменным)</p>
+                    
+                    <p>1. Пусть размер первого файла: V₁ = I × f × t × k</p>
+                    <p>2. Разрешение увеличили в 2 раза: I₂ = 2I</p>
+                    <p>3. Частоту дискретизации уменьшили в 1.5 раза: f₂ = f/1.5</p>
+                    <p>4. Размер второго файла: V₂ = (2I) × (f/1.5) × t × k = (2/1.5) × V₁ = (4/3) × V₁</p>
+                    
+                    <p>5. Скорость передачи в город А: v_A = V₁ / 30 сек</p>
+                    <p>6. Скорость передачи в город Б: v_B = 4 × v_A</p>
+                    
+                    <p>7. Время передачи в город Б:</p>
+                    <div class="formula">t_B = V₂ / v_B = (4/3 × V₁) / (4 × V₁/30) = (4/3) × (30/4) = 30/3 = 10 секунд</div>
+                    
+                    <p><strong>Ответ: 10</strong></p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>Проверка ответа</h2>
+                <div class="answer-section">
+                    <p>Введите ваш ответ (целое число):</p>
+                    <input type="number" id="userAnswer" min="0" max="100" step="1" placeholder="Введите число">
+                    <button id="checkAnswerBtn">Проверить ответ</button>
+                    
+                    <div class="result" id="result"></div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2023 Разбор заданий ЕГЭ по информатике. Для подготовки к экзамену.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Элементы DOM
+            const showSolutionBtn = document.getElementById('showSolutionBtn');
+            const solution = document.getElementById('solution');
+            const checkAnswerBtn = document.getElementById('checkAnswerBtn');
+            const userAnswerInput = document.getElementById('userAnswer');
+            const resultDiv = document.getElementById('result');
+            
+            const correctAnswer = 10;
+            
+            // Показать/скрыть решение
+            showSolutionBtn.addEventListener('click', function() {
+                solution.classList.toggle('active');
+                if (solution.classList.contains('active')) {
+                    showSolutionBtn.textContent = 'Скрыть решение';
+                } else {
+                    showSolutionBtn.textContent = 'Показать решение';
+                }
+            });
+            
+            // Проверить ответ
+            checkAnswerBtn.addEventListener('click', function() {
+                const userAnswer = parseInt(userAnswerInput.value);
+                
+                if (isNaN(userAnswer)) {
+                    resultDiv.textContent = 'Пожалуйста, введите число';
+                    resultDiv.className = 'result incorrect';
+                    return;
+                }
+                
+                if (userAnswer === correctAnswer) {
+                    resultDiv.textContent = '✅ Верно! Ответ правильный.';
+                    resultDiv.className = 'result correct';
+                } else {
+                    resultDiv.innerHTML = '❌ Неверно. Правильный ответ: 10<br>' +
+                                        '<button class="show-solution-btn" id="showSolutionFromResult" style="margin-top:10px;">Показать решение</button>';
+                    resultDiv.className = 'result incorrect';
+                    
+                    // Добавляем обработчик для кнопки показа решения из результата
+                    document.getElementById('showSolutionFromResult').addEventListener('click', function() {
+                        solution.classList.add('active');
+                        showSolutionBtn.textContent = 'Скрыть решение';
+                        solution.scrollIntoView({ behavior: 'smooth' });
+                    });
+                }
+            });
+            
+            // Проверка при нажатии Enter в поле ввода
+            userAnswerInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    checkAnswerBtn.click();
+                }
+            });
+            
+            // Автофокус на поле ввода при загрузке страницы
+            userAnswerInput.focus();
+        });
+    </script>
+</body>
+</html>

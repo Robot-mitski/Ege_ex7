@@ -3,33 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Разбор 1 задания ЕГЭ по информатике</title>
+    <title>Задание 1 ЕГЭ по информатике - Параллельные процессы</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1><i class="fas fa-code"></i> Разбор номера 22</h1>
+            <h1><i class="fas fa-tasks"></i> Задание 1 ЕГЭ по информатике</h1>
             <p class="subtitle">Параллельное и последовательное выполнение процессов</p>
         </header>
 
         <main>
-            <div class="content-wrapper">
-                <section class="task-section">
+            <section class="task-section">
+                <div class="task-header">
                     <h2><i class="fas fa-file-alt"></i> Условие задачи</h2>
-                    <div class="task-text">
-                        <p>В файле содержится информация о совокупности N вычислительных процессов, которые могут выполняться параллельно или последовательно. Будем говорить, что процесс B зависит от процесса A, если для выполнения процесса B необходимы результаты выполнения процесса A. В этом случае процессы могут выполняться только последовательно.</p>
-                        <p>Информация о процессах представлена в файле в виде таблицы. В первом столбце таблицы указан идентификатор процесса (ID), во втором столбце таблицы — время его выполнения в миллисекундах, в третьем столбце перечислены с разделителем «;» ID процессов, от которых зависит данный процесс. Если процесс является независимым, то в таблице указано значение 0.</p>
-                        
-                        <div class="example">
-                            <h3>Типовой пример организации данных в файле:</h3>
+                    <div class="task-number">Задание 22</div>
+                </div>
+                
+                <div class="task-content">
+                    <p>В файле содержится информация о совокупности N вычислительных процессов, которые могут выполняться параллельно или последовательно. Будем говорить, что процесс B зависит от процесса A, если для выполнения процесса B необходимы результаты выполнения процесса A. В этом случае процессы могут выполняться только последовательно.</p>
+                    
+                    <p>Информация о процессах представлена в файле в виде таблицы. В первом столбце таблицы указан идентификатор процесса (ID), во втором столбце таблицы — время его выполнения в миллисекундах, в третьем столбце перечислены с разделителем «;» ID процессов, от которых зависит данный процесс. Если процесс является независимым, то в таблице указано значение 0.</p>
+                    
+                    <div class="example-box">
+                        <h3><i class="fas fa-table"></i> Пример данных из файла:</h3>
+                        <div class="table-wrapper">
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>ID процесса B</th>
-                                        <th>Время выполнения процесса B (мс)</th>
-                                        <th>ID процесса(ов) A</th>
+                                        <th>ID процесса</th>
+                                        <th>Время выполнения (мс)</th>
+                                        <th>ID процесса(ов)</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -40,134 +45,101 @@
                                 </tbody>
                             </table>
                         </div>
-                        
-                        <p>Определите минимальное время, через которое завершится выполнение всей совокупности процессов, при условии, что все независимые друг от друга процессы могут выполняться параллельно.</p>
                     </div>
                     
-                    <div class="file-upload-section">
-                        <h3><i class="fas fa-file-upload"></i> Загрузите файл с данными</h3>
-                        <p>Загрузите ODS файл с данными для выполнения задания:</p>
-                        
-                        <div class="upload-area" id="uploadArea">
-                            <i class="fas fa-cloud-upload-alt upload-icon"></i>
-                            <p>Перетащите ODS файл сюда или нажмите для выбора</p>
-                            <input type="file" id="odsFileInput" accept=".ods" style="display: none;">
-                            <button id="selectFileBtn" class="upload-btn">
-                                <i class="fas fa-folder-open"></i> Выбрать файл
-                            </button>
-                        </div>
-                        
-                        <div class="file-info" id="fileInfo" style="display: none;">
-                            <h4><i class="fas fa-file"></i> Загруженные данные:</h4>
-                            <div class="data-table-container">
-                                <table id="dataTable">
-                                    <thead>
-                                        <tr>
-                                            <th>ID процесса</th>
-                                            <th>Время выполнения (мс)</th>
-                                            <th>Зависит от</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="tableBody">
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                    <div class="task-question">
+                        <p><strong>Определите минимальное время, через которое завершится выполнение всей совокупности процессов, при условии, что все независимые друг от друга процессы могут выполняться параллельно.</strong></p>
                     </div>
-                </section>
+                </div>
+            </section>
 
-                <section class="solution-section">
-                    <h2><i class="fas fa-calculator"></i> Решение</h2>
-                    
-                    <div class="answer-form">
-                        <h3>Введите ваш ответ</h3>
-                        <p>На основе данных из файла определите минимальное время выполнения всех процессов и введите ответ в поле ниже:</p>
-                        
-                        <div class="input-group">
-                            <input type="number" id="userAnswer" placeholder="Введите время в мс" min="0" step="1">
-                            <button id="checkAnswer" class="check-btn">Проверить ответ</button>
-                            <button id="calculateBtn" class="calculate-btn">
-                                <i class="fas fa-calculator"></i> Рассчитать автоматически
-                            </button>
+            <section class="file-section">
+                <h2><i class="fas fa-download"></i> Файл с данными</h2>
+                <div class="download-card">
+                    <div class="file-info">
+                        <div class="file-icon">
+                            <i class="fas fa-file-excel"></i>
                         </div>
-                        
-                        <div id="resultMessage" class="result-message"></div>
-                    </div>
-                    
-                    <div class="explanation">
-                        <h3><i class="fas fa-lightbulb"></i> Подробное объяснение решения</h3>
-                        <div id="dynamicExplanation">
-                            <p>После загрузки файла с данными здесь появится пошаговое объяснение решения.</p>
-                        </div>
-                        
-                        <div class="code-solution">
-                            <h3><i class="fas fa-laptop-code"></i> Решение на JavaScript</h3>
-                            <div class="code-tabs">
-                                <div class="tab active" data-tab="solution1">Алгоритм расчета</div>
-                                <div class="tab" data-tab="solution2">Реализация</div>
-                            </div>
-                            
-                            <div class="code-content active" id="solution1">
-                                <pre><code>// Алгоритм расчета минимального времени выполнения процессов:
-// 1. Создаем словарь для хранения времени завершения каждого процесса
-// 2. Для каждого процесса в порядке зависимости:
-//    - Если процесс независимый (зависит от "0"):
-//        время_завершения = время_выполнения
-//    - Если процесс зависит от других процессов:
-//        время_завершения = время_выполнения + 
-//                          max(время_завершения_зависимых_процессов)
-// 3. Находим максимальное время завершения среди всех процессов
-// 4. Это и будет минимальное время выполнения всей совокупности процессов</code></pre>
-                            </div>
-                            
-                            <div class="code-content" id="solution2">
-                                <pre><code>function calculateMinTime(processes) {
-    // processes - массив объектов {id, time, dependencies}
-    const completionTime = {};
-    
-    // Инициализируем время для независимых процессов
-    processes.forEach(proc => {
-        if (proc.dependencies.length === 0 || 
-            (proc.dependencies.length === 1 && proc.dependencies[0] === "0")) {
-            completionTime[proc.id] = proc.time;
-        }
-    });
-    
-    // Вычисляем время для зависимых процессов
-    let changed = true;
-    while (changed) {
-        changed = false;
-        processes.forEach(proc => {
-            if (completionTime[proc.id] !== undefined) return;
-            
-            const deps = proc.dependencies.filter(dep => dep !== "0");
-            if (deps.every(dep => completionTime[dep] !== undefined)) {
-                const maxDepTime = Math.max(...deps.map(dep => completionTime[dep]));
-                completionTime[proc.id] = proc.time + maxDepTime;
-                changed = true;
-            }
-        });
-    }
-    
-    // Находим максимальное время завершения
-    return Math.max(...Object.values(completionTime));
-}</code></pre>
-                                <p class="code-note">Эта функция используется на сайте для автоматического расчета.</p>
-                            </div>
+                        <div class="file-details">
+                            <h3>processes.ods</h3>
+                            <p>Файл содержит данные о процессах для выполнения задания</p>
+                            <p class="file-size">≈ 2 КБ</p>
                         </div>
                     </div>
-                </section>
-            </div>
+                    <a href="processes.ods" class="download-btn" download>
+                        <i class="fas fa-download"></i> Скачать файл
+                    </a>
+                </div>
+                <p class="file-note">Скачайте файл, откройте его в табличном редакторе (LibreOffice Calc, Excel) и используйте данные для решения задачи.</p>
+            </section>
+
+            <section class="answer-section">
+                <h2><i class="fas fa-check-circle"></i> Проверка ответа</h2>
+                <div class="answer-card">
+                    <p>Введите полученный ответ в поле ниже:</p>
+                    
+                    <div class="input-group">
+                        <input type="number" id="userAnswer" placeholder="Введите время в миллисекундах" min="0" step="1">
+                        <button id="checkAnswer" class="check-btn">
+                            <i class="fas fa-check"></i> Проверить
+                        </button>
+                    </div>
+                    
+                    <div id="resultMessage" class="result-message"></div>
+                </div>
+            </section>
+
+            <section id="solutionSection" class="solution-section" style="display: none;">
+                <h2><i class="fas fa-lightbulb"></i> Решение задачи</h2>
+                <div class="solution-content">
+                    <div class="solution-steps">
+                        <h3>Пошаговое решение:</h3>
+                        <ol>
+                            <li>Процессы с ID «1», «2», «9» и «10» независимые, поэтому их выполнение закончится на 4, 3, 7 и 8 мс соответственно.</li>
+                            <li>Процесс с ID «3» может выполняться только после завершения процессов с ID «1» и «2», поэтому он может завершиться на 5 мс (max(4, 3) + 1 = 5).</li>
+                            <li>Процессы с ID «4» и «5» зависят от процесса с ID «3», значит, они завершатся через 5 + 7 = 12 мс и 5 + 6 = 11 мс соответственно.</li>
+                            <li>Процесс с ID «6» зависит от процесса с ID «5», значит, он завершится через 11 + 3 = 14 мс.</li>
+                            <li>Процесс с ID «7» зависит от процессов с ID «4» и «6», следовательно, поскольку процесс с ID «6» завершится только на 14 мс, процесс с ID «7» выполнится на 14 + 1 = 15 мс.</li>
+                            <li>Процесс с ID «8» зависит от процесса с ID «7», значит, он выполнится на 15 + 2 = 17 мс.</li>
+                            <li>Процесс с ID «11» зависит от процесса с ID «9», поэтому он выполнится на 7 + 6 = 13 мс.</li>
+                            <li>Процесс с ID «12» зависит от процесса с ID «10», поэтому он выполнится на 8 + 6 = 14 мс.</li>
+                        </ol>
+                        
+                        <div class="final-answer">
+                            <p>Таким образом, вся совокупность процессов завершится на <strong>17 мс</strong>.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="code-solution">
+                        <h3><i class="fas fa-code"></i> Решение на Python</h3>
+                        <div class="code-block">
+                            <pre><code>f = open("22.txt").read().split("\n")
+m = {}
+for i in f:
+    s = i.split()
+    if s[2] == '0':
+        m[s[0]] = int(s[1])
+    else:
+        w = s[2].split(";")
+        sp = []
+        for j in w:
+            j = j.replace(" ", "")
+            sp.append(int(m[j]))
+        m[s[0]] = int(s[1]) + max(sp)
+print(max(m.values()))</code></pre>
+                            <p class="code-note">Решение Никитиной Елизаветы на языке Python.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <footer>
-            <p>Сделано Смирновой Никой, 11В класс</p>
-            <p class="footer-note">Поставьте, пожалуйста, 5 :)</p>
+            <p>© 2023 Разбор заданий ЕГЭ по информатике. Для образовательных целей.</p>
+            <p class="footer-note">Задание основано на материалах ФИПИ</p>
         </footer>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

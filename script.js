@@ -1,38 +1,48 @@
-const CORRECT_ANSWER = 17;
+const checkBtn = document.getElementById('checkBtn');
+const answerInput = document.getElementById('answerInput');
+const resultBox = document.getElementById('resultBox');
+const solutionBox = document.getElementById('solutionBox');
+const scrollBtn = document.getElementById('scrollTop');
 
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('checkAnswer').addEventListener('click', checkAnswer);
-    document.getElementById('userAnswer').addEventListener('keyup', function(event) {
-        if (event.key === 'Enter') {
-            checkAnswer();
-        }
-    });
-    
-    document.getElementById('userAnswer').focus();
+checkBtn.addEventListener('click', checkAnswer);
+
+answerInput.addEventListener('keyup', function(e) {
+    if (e.key === 'Enter') checkAnswer();
 });
 
 function checkAnswer() {
-    const userAnswerInput = document.getElementById('userAnswer');
-    const userAnswer = parseInt(userAnswerInput.value.trim());
-    const resultMessage = document.getElementById('resultMessage');
-    const solutionSection = document.getElementById('solutionSection');
+    const userAnswer = parseInt(answerInput.value);
+    resultBox.style.display = 'block';
+    solutionBox.classList.add('hidden');
     
     if (isNaN(userAnswer)) {
-        resultMessage.textContent = 'Пожалуйста, введите число в поле ответа.';
-        resultMessage.className = 'result-message incorrect';
-        resultMessage.style.display = 'block';
+        resultBox.textContent = 'Введите число';
+        resultBox.style.backgroundColor = '#fff3cd';
+        resultBox.style.color = '#856404';
         return;
     }
     
-    if (userAnswer === CORRECT_ANSWER) {
-        resultMessage.textContent = '✅ Правильно! Ответ верный: минимальное время выполнения всех процессов составляет 17 мс.';
-        resultMessage.className = 'result-message correct';
-        solutionSection.style.display = 'none';
+    if (userAnswer === 17) {
+        resultBox.textContent = 'Верно! Ответ: 17 мс';
+        resultBox.style.backgroundColor = '#d4edda';
+        resultBox.style.color = '#155724';
     } else {
-        resultMessage.textContent = '❌ Ответ неверный. Правильный ответ: 17 мс. Ниже показано подробное решение.';
-        resultMessage.className = 'result-message incorrect';
-        solutionSection.style.display = 'block';
-        solutionSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        resultBox.textContent = 'Неверно. Правильный ответ: 17 мс';
+        resultBox.style.backgroundColor = '#f8d7da';
+        resultBox.style.color = '#721c24';
+        solutionBox.classList.remove('hidden');
+        solutionBox.scrollIntoView({behavior: 'smooth'});
     }
-    resultMessage.style.display = 'block';
 }
+
+window.addEventListener('scroll', function() {
+    if (window.pageYOffset > 300) {
+        scrollBtn.classList.add('visible');
+    } else {
+        scrollBtn.classList.remove('visible');
+    }
+});
+
+scrollBtn.addEventListener('click', function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+});

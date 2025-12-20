@@ -8,21 +8,18 @@ document.getElementById('checkBtn').onclick = function() {
     
     if (isNaN(userAnswer)) {
         resultDiv.textContent = 'Введите число';
-        resultDiv.style.background = '#ffebee';
-        resultDiv.style.color = '#c62828';
+        resultDiv.style.background = 'rgb(255, 235, 238)';
+        resultDiv.style.color = 'rgb(198, 40, 40)';
         return;
     }
     
     if (userAnswer === 17) {
-        resultDiv.textContent = '✓ Правильно! Ответ: 17 мс';
-        resultDiv.style.background = '#e8f5e9';
-        resultDiv.style.color = '#2e7d32';
+        resultDiv.textContent = 'Правильно! Ответ: 17 мс';
+        resultDiv.style.color = 'rgb(46, 125, 50)';
     } else {
-        resultDiv.textContent = '✗ Неверно. Правильный ответ: 17 мс';
-        resultDiv.style.background = '#ffebee';
-        resultDiv.style.color = '#c62828';
+        resultDiv.textContent = 'Неверно. Правильный ответ: 17 мс';
+        resultDiv.style.color = 'rgb(198, 40, 40)';
         solutionDiv.classList.remove('hidden');
-        solutionDiv.scrollIntoView({behavior: 'smooth'});
     }
 };
 

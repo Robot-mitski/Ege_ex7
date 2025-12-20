@@ -1,48 +1,44 @@
-const checkBtn = document.getElementById('checkBtn');
-const answerInput = document.getElementById('answerInput');
-const resultBox = document.getElementById('resultBox');
-const solutionBox = document.getElementById('solutionBox');
-const scrollBtn = document.getElementById('scrollTop');
-
-checkBtn.addEventListener('click', checkAnswer);
-
-answerInput.addEventListener('keyup', function(e) {
-    if (e.key === 'Enter') checkAnswer();
-});
-
-function checkAnswer() {
-    const userAnswer = parseInt(answerInput.value);
-    resultBox.style.display = 'block';
-    solutionBox.classList.add('hidden');
+document.getElementById('checkBtn').onclick = function() {
+    const userAnswer = parseInt(document.getElementById('answerInput').value);
+    const resultDiv = document.getElementById('result');
+    const solutionDiv = document.getElementById('solution');
+    
+    resultDiv.style.display = 'block';
+    solutionDiv.classList.add('hidden');
     
     if (isNaN(userAnswer)) {
-        resultBox.textContent = 'Введите число';
-        resultBox.style.backgroundColor = '#fff3cd';
-        resultBox.style.color = '#856404';
+        resultDiv.textContent = 'Введите число';
+        resultDiv.style.background = '#ffebee';
+        resultDiv.style.color = '#c62828';
         return;
     }
     
     if (userAnswer === 17) {
-        resultBox.textContent = 'Верно! Ответ: 17 мс';
-        resultBox.style.backgroundColor = '#d4edda';
-        resultBox.style.color = '#155724';
+        resultDiv.textContent = '✓ Правильно! Ответ: 17 мс';
+        resultDiv.style.background = '#e8f5e9';
+        resultDiv.style.color = '#2e7d32';
     } else {
-        resultBox.textContent = 'Неверно. Правильный ответ: 17 мс';
-        resultBox.style.backgroundColor = '#f8d7da';
-        resultBox.style.color = '#721c24';
-        solutionBox.classList.remove('hidden');
-        solutionBox.scrollIntoView({behavior: 'smooth'});
+        resultDiv.textContent = '✗ Неверно. Правильный ответ: 17 мс';
+        resultDiv.style.background = '#ffebee';
+        resultDiv.style.color = '#c62828';
+        solutionDiv.classList.remove('hidden');
+        solutionDiv.scrollIntoView({behavior: 'smooth'});
     }
-}
+};
 
-window.addEventListener('scroll', function() {
-    if (window.pageYOffset > 300) {
-        scrollBtn.classList.add('visible');
+document.getElementById('answerInput').onkeyup = function(e) {
+    if (e.key === 'Enter') document.getElementById('checkBtn').click();
+};
+
+window.onscroll = function() {
+    const upBtn = document.getElementById('upBtn');
+    if (window.pageYOffset > 200) {
+        upBtn.classList.add('visible');
     } else {
-        scrollBtn.classList.remove('visible');
+        upBtn.classList.remove('visible');
     }
-});
+};
 
-scrollBtn.addEventListener('click', function() {
+document.getElementById('upBtn').onclick = function() {
     window.scrollTo({top: 0, behavior: 'smooth'});
-});
+};

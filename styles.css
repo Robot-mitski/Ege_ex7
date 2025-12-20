@@ -1,52 +1,43 @@
 body {
     margin: 0;
     font-family: Arial;
-    background: #f5f7fa;
+    background: #fff5f5;
+    min-height: 100vh;
     color: #333;
 }
 
-.page {
-    display: flex;
-    max-width: 1100px;
+.wrap {
+    max-width: 800px;
     margin: 20px auto;
-    gap: 20px;
+    padding: 20px;
 }
 
-.left-side {
-    flex: 1;
+.block {
     background: white;
-    padding: 25px;
-}
-
-.right-side {
-    width: 280px;
-}
-
-.header {
-    padding-bottom: 15px;
-    border-bottom: 2px solid #3a506b;
+    border: 2px solid #ff7f50;
+    padding: 20px;
     margin-bottom: 20px;
+    border-radius: 5px;
 }
 
 h1 {
-    color: #2c3e50;
-    font-size: 26px;
+    color: #ff4500;
+    margin: 0 0 5px 0;
+}
+
+.sub {
+    color: #ff7f50;
     margin: 0;
 }
 
 h2 {
-    color: #2c3e50;
-    margin: 20px 0 15px;
-    padding-left: 10px;
-    border-left: 3px solid #3a506b;
+    color: #ff4500;
+    margin: 0 0 15px 0;
+    border-bottom: 2px solid #ffe4e1;
+    padding-bottom: 5px;
 }
 
-p {
-    line-height: 1.5;
-    margin: 10px 0;
-}
-
-.table-box {
+.table {
     margin: 20px 0;
     overflow: auto;
 }
@@ -57,47 +48,56 @@ table {
 }
 
 th {
-    background: #3a506b;
+    background: #ff7f50;
     color: white;
-    padding: 12px;
-    text-align: left;
+    padding: 10px;
 }
 
 td {
-    padding: 10px;
-    border-bottom: 1px solid #eee;
+    padding: 8px 10px;
+    border-bottom: 1px solid #ffe4e1;
 }
 
 tr:nth-child(even) {
-    background: #f9f9f9;
+    background: #fff5f5;
 }
 
-.file-box {
-    background: #f8f9fa;
-    padding: 20px;
-    margin: 20px 0;
-    border: 1px solid #ddd;
+.task {
+    background: #ffe4e1;
+    padding: 15px;
+    color: #ff4500;
+    font-weight: bold;
 }
 
-.file-btn {
+.btn {
     display: inline-block;
-    background: #2c3e50;
+    background: #ff7f50;
     color: white;
-    padding: 12px 20px;
-    text-decoration: none;
-    margin-top: 10px;
+    padding: 10px 20px;
     border: none;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 3px;
     font-size: 16px;
 }
 
-.answer-box {
-    padding: 20px;
-    background: white;
-    border: 1px solid #ddd;
-    margin-bottom: 20px;
+.file {
+    margin: 10px 0;
 }
 
-.input-row {
+.img {
+    width: 100%;
+    margin: 20px 0 10px 0;
+    border: 2px solid #ff7f50;
+}
+
+.author {
+    text-align: center;
+    color: #ff4500;
+    font-weight: bold;
+}
+
+.input {
     display: flex;
     gap: 10px;
     margin: 15px 0;
@@ -105,81 +105,47 @@ tr:nth-child(even) {
 
 #answerInput {
     flex: 1;
-    padding: 12px;
-    border: 2px solid #ddd;
+    padding: 10px;
+    border: 2px solid #ffb6c1;
     font-size: 16px;
 }
 
-.check-btn {
-    background: #2980b9;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
+#answerInput:focus {
+    border-color: #ff7f50;
+    outline: none;
 }
 
-.result-box {
+.check {
+    padding: 10px 25px;
+}
+
+.result {
     padding: 15px;
     margin-top: 15px;
     display: none;
-}
-
-.solution-box {
-    background: #f8f9fa;
-    padding: 20px;
-    border: 1px solid #ddd;
-    margin-top: 20px;
 }
 
 .hidden {
     display: none;
 }
 
-.author-card {
-    background: white;
+.answer {
+    background: #ffe4e1;
     padding: 15px;
-    border: 1px solid #ddd;
-    text-align: center;
-    position: sticky;
-    top: 20px;
+    color: #ff4500;
+    font-size: 18px;
+    margin-top: 20px;
 }
 
-.author-img {
-    position: relative;
-    margin-bottom: 10px;
-}
-
-.author-img img {
-    width: 100%;
-    display: block;
-}
-
-.author-label {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-    background: rgba(58, 80, 107, 0.9);
-    color: white;
-    padding: 8px;
-    font-size: 14px;
-}
-
-.scroll-btn {
+.up {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 45px;
-    height: 45px;
-    background: #3a506b;
-    color: white;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
+    width: 40px;
+    height: 40px;
     display: none;
 }
 
-.scroll-btn.visible {
+.up.visible {
     display: block;
 }

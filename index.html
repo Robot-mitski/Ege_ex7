@@ -5,82 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Задание 1 ЕГЭ</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="page">
-        <div class="left-side">
-            <div class="header">
-                <h1><i class="fas fa-calculator"></i> Задание 1 ЕГЭ</h1>
-                <p class="small-text">Параллельные процессы</p>
-            </div>
+    <button id="upBtn" class="btn up">↑</button>
 
-            <div class="task-box">
-                <h2>Условие задачи</h2>
-                <p>В файле информация о вычислительных процессах. Процессы могут выполняться параллельно или последовательно.</p>
-                <p>Процесс B зависит от процесса A, если для B нужны результаты A. Тогда они выполняются только последовательно.</p>
-                <p>В таблице: ID процесса, время выполнения (мс), ID процессов, от которых зависит (через ;). Если независимый — указано 0.</p>
-                
-                <div class="table-box">
-                    <table>
-                        <tr><th>ID</th><th>Время</th><th>Зависит от</th></tr>
-                        <tr><td>1</td><td>4</td><td>0</td></tr>
-                        <tr><td>2</td><td>3</td><td>0</td></tr>
-                        <tr><td>3</td><td>1</td><td>1; 2</td></tr>
-                        <tr><td>4</td><td>7</td><td>3</td></tr>
-                    </table>
-                </div>
-                
-                <p class="question">Найдите минимальное время выполнения всех процессов.</p>
-            </div>
-
-            <div class="file-box">
-                <h2><i class="fas fa-download"></i> Файл с данными</h2>
-                <p>Скачайте файл для решения:</p>
-                <a href="data.ods" class="file-btn" download>
-                    <i class="fas fa-file-excel"></i> data.ods
-                </a>
-            </div>
-
-            <div class="answer-box">
-                <h2>Проверка ответа</h2>
-                <p>Введите ответ (в мс):</p>
-                <div class="input-row">
-                    <input type="number" id="answerInput" placeholder="Число">
-                    <button id="checkBtn" class="check-btn">Проверить</button>
-                </div>
-                <div id="resultBox" class="result-box"></div>
-            </div>
-
-            <div id="solutionBox" class="solution-box hidden">
-                <h2>Решение</h2>
-                <p>Процессы 1,2,9,10 независимы: 4,3,7,8 мс</p>
-                <p>Процесс 3 после 1 и 2: max(4,3)+1=5 мс</p>
-                <p>Процесс 4: 5+7=12 мс</p>
-                <p>Процесс 5: 5+6=11 мс</p>
-                <p>Процесс 6: 11+3=14 мс</p>
-                <p>Процесс 7: max(12,14)+1=15 мс</p>
-                <p>Процесс 8: 15+2=17 мс</p>
-                <p>Процесс 11: 7+6=13 мс</p>
-                <p>Процесс 12: 8+6=14 мс</p>
-                <p class="final">Ответ: <strong>17 мс</strong></p>
-            </div>
+    <div class="wrap">
+        <div class="block">
+            <h1>Задание 1 ЕГЭ</h1>
+            <p class="sub">Параллельные процессы</p>
         </div>
 
-        <div class="right-side">
-            <div class="author-card">
-                <div class="author-img">
-                    <img href=img.jpg" alt="Автор">
-                    <div class="author-label">Автор сайта указывает на свежесть библиотек в коде</div>
-                </div>
-                <p class="author-name">Разработчик</p>
+        <div class="block">
+            <h2>Условие</h2>
+            <p>Файл содержит информацию о процессах. Процессы могут выполняться параллельно или последовательно.</p>
+            <p>Процесс B зависит от процесса A, если для B нужны результаты A.</p>
+            <p>В таблице: ID процесса, время выполнения (мс), ID процессов-зависимостей (через ;). 0 - независимый.</p>
+            
+            <div class="table">
+                <table>
+                    <tr><th>ID</th><th>Время</th><th>Зависит от</th></tr>
+                    <tr><td>1</td><td>4</td><td>0</td></tr>
+                    <tr><td>2</td><td>3</td><td>0</td></tr>
+                    <tr><td>3</td><td>1</td><td>1; 2</td></tr>
+                    <tr><td>4</td><td>7</td><td>3</td></tr>
+                </table>
             </div>
+            
+            <p class="task">Найти минимальное время выполнения всех процессов.</p>
+        </div>
+
+        <div class="block">
+            <h2>Файл и автор</h2>
+            <a href="data.ods" class="btn file" download>data.ods</a>
+            <img src="img.jpg" alt="Автор" class="img">
+            <div class="author">Автор сайта</div>
+        </div>
+
+        <div class="block">
+            <h2>Проверка</h2>
+            <p>Введите ответ (мс):</p>
+            <div class="input">
+                <input type="number" id="answerInput" placeholder="Число">
+                <button id="checkBtn" class="btn check">Проверить</button>
+            </div>
+            <div id="result" class="result"></div>
+        </div>
+
+        <div id="solution" class="block hidden">
+            <h2>Решение</h2>
+            <p>Процессы 1,2,9,10: 4,3,7,8 мс</p>
+            <p>Процесс 3: max(4,3)+1=5 мс</p>
+            <p>Процесс 4: 5+7=12 мс</p>
+            <p>Процесс 5: 5+6=11 мс</p>
+            <p>Процесс 6: 11+3=14 мс</p>
+            <p>Процесс 7: max(12,14)+1=15 мс</p>
+            <p>Процесс 8: 15+2=17 мс</p>
+            <p>Процесс 11: 7+6=13 мс</p>
+            <p>Процесс 12: 8+6=14 мс</p>
+            <p class="answer">Ответ: <strong>17 мс</strong></p>
         </div>
     </div>
-
-    <button id="scrollTop" class="scroll-btn hidden">
-        <i class="fas fa-arrow-up"></i>
-    </button>
 
     <script src="script.js"></script>
 </body>

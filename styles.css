@@ -1,9 +1,9 @@
 body {
     margin: 0;
     font-family: Arial;
-    background: #fff5f5;
+    background: rgb(255, 245, 245);
     min-height: 100vh;
-    color: #333;
+    color: rgb(51, 51, 51);
 }
 
 .wrap {
@@ -14,26 +14,26 @@ body {
 
 .block {
     background: white;
-    border: 2px solid #ff7f50;
+    border: 2px solid rgb(255, 127, 80);
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 5px;
 }
 
 h1 {
-    color: #ff4500;
+    color: rgb(255, 69, 0);
     margin: 0 0 5px 0;
 }
 
 .sub {
-    color: #ff7f50;
+    color: rgb(255, 127, 80);
     margin: 0;
 }
 
 h2 {
-    color: #ff4500;
+    color: rgb(255, 69, 0);
     margin: 0 0 15px 0;
-    border-bottom: 2px solid #ffe4e1;
+    border-bottom: 2px solid rgb(255, 228, 225);
     padding-bottom: 5px;
 }
 
@@ -48,30 +48,30 @@ table {
 }
 
 th {
-    background: #ff7f50;
+    background: rgb(255, 127, 80);
     color: white;
     padding: 10px;
 }
 
 td {
     padding: 8px 10px;
-    border-bottom: 1px solid #ffe4e1;
+    border-bottom: 1px solid rgb(255, 228, 225);
 }
 
 tr:nth-child(even) {
-    background: #fff5f5;
+    background: rgb(255, 245, 245);
 }
 
 .task {
-    background: #ffe4e1;
+    background: rgb(255, 228, 225);
     padding: 15px;
-    color: #ff4500;
+    color: rgb(255, 69, 0);
     font-weight: bold;
 }
 
 .btn {
     display: inline-block;
-    background: #ff7f50;
+    background: rgb(255, 127, 80);
     color: white;
     padding: 10px 20px;
     border: none;
@@ -81,6 +81,10 @@ tr:nth-child(even) {
     font-size: 16px;
 }
 
+.btn:hover {
+    background: rgb(255, 99, 71);
+}
+
 .file {
     margin: 10px 0;
 }
@@ -88,12 +92,12 @@ tr:nth-child(even) {
 .img {
     width: 100%;
     margin: 20px 0 10px 0;
-    border: 2px solid #ff7f50;
+    border: 2px solid rgb(255, 127, 80);
 }
 
 .author {
     text-align: center;
-    color: #ff4500;
+    color: rgb(255, 69, 0);
     font-weight: bold;
 }
 
@@ -106,12 +110,12 @@ tr:nth-child(even) {
 #answerInput {
     flex: 1;
     padding: 10px;
-    border: 2px solid #ffb6c1;
+    border: 2px solid rgb(255, 182, 193);
     font-size: 16px;
 }
 
 #answerInput:focus {
-    border-color: #ff7f50;
+    border-color: rgb(255, 127, 80);
     outline: none;
 }
 
@@ -130,11 +134,12 @@ tr:nth-child(even) {
 }
 
 .answer {
-    background: #ffe4e1;
+    background: rgb(255, 228, 225);
     padding: 15px;
-    color: #ff4500;
+    color: rgb(255, 69, 0);
     font-size: 18px;
     margin-top: 20px;
+    font-weight: bold;
 }
 
 .up {
@@ -148,4 +153,22 @@ tr:nth-child(even) {
 
 .up.visible {
     display: block;
+}
+
+@media (max-width: 768px) {
+    .wrap {
+        padding: 10px;
+    }
+    
+    .block {
+        padding: 15px;
+    }
+    
+    .input {
+        flex-direction: column;
+    }
+    
+    .check {
+        width: 100%;
+    }
 }
